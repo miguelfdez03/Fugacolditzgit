@@ -545,7 +545,7 @@ public class Matriz {
         }
     }
 
-    public void aniadirGuardia() {
+    public void aniadirGuardia(Guardia g) {
         boolean isOk = false;
 
         while (!isOk) {
@@ -553,7 +553,8 @@ public class Matriz {
             int y = (int) (Math.random() * 10);
 
             if (comprobarPosition(x, y)) {
-                guardiaG = new Guardia(x, y);
+                g.x=x;
+                g.y=y;
                 tablero[x][y] = "G";
                 isOk = true;
             }
@@ -561,6 +562,7 @@ public class Matriz {
     }
 
     public void moverG(Matriz matriz, Guardia g) {
+        try{
         int ale = (int) ((Math.random() * 4 + 1));
         switch (ale) {
             case 1:
@@ -587,6 +589,9 @@ public class Matriz {
                 matriz.tablero[g.x][g.y] = "X";
                 g.y = g.y + 1;
                 break;
+        }
+        }catch(ArrayIndexOutOfBoundsException e){
+            
         }
     }
 
