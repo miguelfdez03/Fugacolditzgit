@@ -530,10 +530,10 @@ public class Matriz {
         while (!comprobar) {
             int x = (int) (Math.random() * 10);
             int y = (int) (Math.random() * 10);
-            if (comprobarPosition(x, y) && comprobarPosition(x - 1, y) && comprobarPosition(x - 2, y) &&
-                    comprobarPosition(x + 1, y) && comprobarPosition(x + 2, y) &&
-                    comprobarPosition(x, y + 1) && comprobarPosition(x, y + 2) &&
-                    comprobarPosition(x, y - 1) && comprobarPosition(x, y - 2)) {
+            if (comprobarPosition(x, y) && comprobarPosition(x - 1, y) && comprobarPosition(x - 2, y)
+                    && comprobarPosition(x + 1, y) && comprobarPosition(x + 2, y)
+                    && comprobarPosition(x, y + 1) && comprobarPosition(x, y + 2)
+                    && comprobarPosition(x, y - 1) && comprobarPosition(x, y - 2)) {
 
                 Posicion po = new Posicion(x, y);
                 Personaje p = new Personaje(po);
@@ -553,7 +553,7 @@ public class Matriz {
             int y = (int) (Math.random() * 10);
 
             if (comprobarPosition(x, y)) {
-                 guardiaG = new Guardia(x, y);
+                guardiaG = new Guardia(x, y);
                 tablero[x][y] = "G";
                 isOk = true;
             }
@@ -561,11 +561,32 @@ public class Matriz {
     }
 
     public void moverG(Matriz matriz) {
-        if (matriz.tablero[guardiaG.x][guardiaG.y].equals("G")) {
-            matriz.tablero[guardiaG.x-1][guardiaG.y] = "G";
-            matriz.tablero[guardiaG.x][guardiaG.y] = "X";
-            //matriz.tablero[guardiaG.x - 1][guardiaG.y+1] = "G";
-            //matriz.perder = true;
+        int ale = (int) ((Math.random() * 4 + 1));
+        switch (ale) {
+            case 1:
+                //arriba
+                matriz.tablero[guardiaG.x - 1][guardiaG.y] = "G";
+                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
+                guardiaG.x = guardiaG.x - 1;
+                break;
+            case 2:
+                //abajo
+                matriz.tablero[guardiaG.x + 1][guardiaG.y] = "G";
+                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
+                guardiaG.x = guardiaG.x + 1;
+                break;
+            case 3:
+                //izquierda
+                matriz.tablero[guardiaG.x][guardiaG.y - 1] = "G";
+                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
+                guardiaG.y = guardiaG.y - 1;
+                break;
+            case 4:
+                //derecha
+                matriz.tablero[guardiaG.x][guardiaG.y - 1] = "G";
+                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
+                guardiaG.y = guardiaG.y + 1;
+                break;
         }
     }
 

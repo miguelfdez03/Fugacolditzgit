@@ -2,8 +2,7 @@ package fugacolditz;
 import java.util.Scanner;
 
 public class Carcel {
-
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
         System.out.println("Elige el nivel de dificultad(facil, medio, dificil):");
         Scanner sc = new Scanner(System.in);
