@@ -560,32 +560,32 @@ public class Matriz {
         }
     }
 
-    public void moverG(Matriz matriz) {
+    public void moverG(Matriz matriz, Guardia g) {
         int ale = (int) ((Math.random() * 4 + 1));
         switch (ale) {
             case 1:
                 //arriba
-                matriz.tablero[guardiaG.x - 1][guardiaG.y] = "G";
-                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
-                guardiaG.x = guardiaG.x - 1;
+                matriz.tablero[g.x - 1][g.y] = "G";
+                matriz.tablero[g.x][g.y] = "X";
+                g.x = g.x - 1;
                 break;
             case 2:
                 //abajo
-                matriz.tablero[guardiaG.x + 1][guardiaG.y] = "G";
-                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
-                guardiaG.x = guardiaG.x + 1;
+                matriz.tablero[g.x + 1][g.y] = "G";
+                matriz.tablero[g.x][g.y] = "X";
+                g.x = g.x + 1;
                 break;
             case 3:
                 //izquierda
-                matriz.tablero[guardiaG.x][guardiaG.y - 1] = "G";
-                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
-                guardiaG.y = guardiaG.y - 1;
+                matriz.tablero[g.x][g.y - 1] = "G";
+                matriz.tablero[g.x][g.y] = "X";
+                g.y = g.y - 1;
                 break;
             case 4:
                 //derecha
-                matriz.tablero[guardiaG.x][guardiaG.y - 1] = "G";
-                matriz.tablero[guardiaG.x][guardiaG.y] = "X";
-                guardiaG.y = guardiaG.y + 1;
+                matriz.tablero[g.x][g.y - 1] = "G";
+                matriz.tablero[g.x][g.y] = "X";
+                g.y = g.y + 1;
                 break;
         }
     }

@@ -20,32 +20,32 @@ public class Carcel {
         }
 
         //INICIALIZAMOS EL TABLERO
-        Matriz t = new Matriz();
+        Matriz tablero = new Matriz();
 
         Herramienta herramienta = new Herramienta("Pasaporte");
-        t.AniadirHerramienta(herramienta);
+        tablero.AniadirHerramienta(herramienta);
         Herramienta herramienta1 = new Herramienta("Alicates");
-        t.AniadirHerramienta(herramienta1);
+        tablero.AniadirHerramienta(herramienta1);
         Herramienta uniforme = new Herramienta("Uniforme");
-        t.AniadirHerramienta(uniforme);
+        tablero.AniadirHerramienta(uniforme);
         for (int i = 1; i <= guardias; i++) {
-            t.aniadirGuardia();
+            tablero.aniadirGuardia();
         }
-        t.AniadirPersonaje();
-        System.out.println(t.imprimirTablero());
+        tablero.AniadirPersonaje();
+        System.out.println(tablero.imprimirTablero());
         int contador =0;
         do{
             System.out.println("A que posicion quieres moverte?(W,A,S,D): ");
             String mov = sc.next();
-            t.personaje1.mover(mov, t);
-            System.out.println(t.imprimirTablero());
+            tablero.personaje1.mover(mov, tablero);
+            tablero.moverG(tablero,tablero.guardiaG);
+            System.out.println(tablero.imprimirTablero());
             contador++;
-            if (t.personaje1.alicates&&t.personaje1.pasaporte&&t.personaje1.uniforme){
+            if (tablero.personaje1.alicates&&tablero.personaje1.pasaporte&&tablero.personaje1.uniforme){
                 System.out.println("HAS GANADO!!!!");
                 return;
-            }
-            t.moverG(t);
-        }while((!t.EndGame())&&(contador != 30));
+            }            
+        }while((!tablero.EndGame())&&(contador != 30));
         System.out.println("END GAME!");
         System.exit(0);
     }
