@@ -585,7 +585,7 @@ public class Matriz {
                 break;
             case 4:
                 //derecha
-                matriz.tablero[g.x][g.y - 1] = "G";
+                matriz.tablero[g.x][g.y + 1] = "G";
                 matriz.tablero[g.x][g.y] = "X";
                 g.y = g.y + 1;
                 break;
