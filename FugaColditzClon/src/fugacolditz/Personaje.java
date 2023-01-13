@@ -223,7 +223,7 @@ public class Personaje {
             System.out.println("Un numero del uno al 3 porfavor...");
             recogerHerramienta(x, y, t);
         }
-        System.out.println("Es una tonteria que no metas un numero del 1 al 3");
+        
         return false;        
     }
 
