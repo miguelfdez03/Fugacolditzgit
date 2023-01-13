@@ -10,6 +10,7 @@ public class Carcel {
         Guardia guardia2 = new Guardia(0, 0);
         Guardia guardia3 = new Guardia(0, 0);
         System.out.println("Elige el nivel de dificultad(facil, medio, dificil):");
+        System.out.println("si lo escribes mal se te asigna por defecto el modo dificl asique atento a lo que escribes :)");
         Scanner sc = new Scanner(System.in);
         String opcion = sc.next();
 
@@ -18,10 +19,10 @@ public class Carcel {
         //INICIALIZAMOS EL TABLERO
         Matriz tablero = new Matriz();
 
-        Herramienta herramienta = new Herramienta("Pasaporte");
-        tablero.AniadirHerramienta(herramienta);
-        Herramienta herramienta1 = new Herramienta("Alicates");
-        tablero.AniadirHerramienta(herramienta1);
+        Herramienta pasaporte = new Herramienta("Pasaporte");
+        tablero.AniadirHerramienta(pasaporte);
+        Herramienta alicates = new Herramienta("Alicates");
+        tablero.AniadirHerramienta(alicates);
         Herramienta uniforme = new Herramienta("Uniforme");
         tablero.AniadirHerramienta(uniforme);
         if (opcion.equalsIgnoreCase("facil")) {
