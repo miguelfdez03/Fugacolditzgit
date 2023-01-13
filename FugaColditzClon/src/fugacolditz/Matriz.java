@@ -546,9 +546,9 @@ public class Matriz {
     }
 
     public void aniadirGuardia(Guardia g) {
-        boolean isOk = false;
+        boolean valido = false;
 
-        while (!isOk) {
+        while (!valido) {
             int x = (int) (Math.random() * 10);
             int y = (int) (Math.random() * 10);
 
@@ -556,7 +556,7 @@ public class Matriz {
                 g.x=x;
                 g.y=y;
                 tablero[x][y] = "G";
-                isOk = true;
+                valido = true;
             }
         }
     }
@@ -613,20 +613,41 @@ public class Matriz {
 
     public boolean comprobarPosition(int x, int y) {
 
-        boolean isOk = false;
+        boolean valido = false;
 
         // Compruebo que esa casilla esta libre;
         try {
             if (tablero[x][y].equals("X")) {
-                isOk = true;
+                valido = true;
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
-            isOk = true;
+            valido = true;
         }
 
-        return isOk;
+        return valido;
 
+    }
+    
+    public boolean comprobaralrededor(int x, int y){
+        //devolvemos true cuando los 9 casilleros de la coordenada y su alrededor sean X
+        boolean valido2 = false;
+        int contador=0;
+        for (int i = x-1; i <=x+1; i++) {
+            for (int j = y-1; j <=y+1; j++) {
+                if(tablero[i][j].equalsIgnoreCase("X")){
+                    contador++;
+                }else{
+                    contador--;
+                }
+            }
+        }
+        if (contador!=9) {
+            valido2=false;
+        }else{
+            valido2=true;
+        }
+        return valido2;
     }
 
     public boolean EndGame() {

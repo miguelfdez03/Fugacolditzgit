@@ -157,21 +157,21 @@ public class Personaje {
 
         if (aleatorio == 1 && opcion == 2) { //piedra vs papel
             ganar = true;
-            System.out.println("el bot a sacado pidra y tu papel");
-            System.out.println("se queda con la herramienta");
+            System.out.println("el bot a sacado piedra y tu papel!");
+            System.out.println("te quedas con la herramienta");
         }
 
         if (aleatorio == 2 && opcion == 3) {//papel vs tijeras
             ganar = true;
-            System.out.println("el bot a sacado papel y tu tijeras");
-            System.out.println("se queda con la herramienta");
+            System.out.println("el bot a sacado papel y tu tijeras!");
+            System.out.println("te quedas con la herramienta");
 
         }
 
         if (aleatorio == 3 && opcion == 1) {//tijeras vs piedra
             ganar = true;
-            System.out.println("el bot a sacado tijeras y tu piedra");
-            System.out.println("se queda con la herramienta");
+            System.out.println("el bot a sacado tijeras y tu piedra!");
+            System.out.println("te quedas con la herramienta");
         }
 
         if (aleatorio == opcion) {
