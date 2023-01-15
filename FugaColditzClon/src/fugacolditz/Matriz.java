@@ -651,7 +651,6 @@ public class Matriz {
     }
 
     public boolean EndGame() {
-
         return this.perder;
     }
 }

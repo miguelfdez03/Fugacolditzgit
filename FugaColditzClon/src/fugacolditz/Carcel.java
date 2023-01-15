@@ -14,7 +14,6 @@ public class Carcel {
         Scanner sc = new Scanner(System.in);
         String opcion = sc.next();
 
-        int guardias = 0;
 
         //INICIALIZAMOS EL TABLERO
         Matriz tablero = new Matriz();
@@ -58,6 +57,12 @@ public class Carcel {
             contador++;
             if (tablero.personaje1.alicates && tablero.personaje1.pasaporte && tablero.personaje1.uniforme) {
                 System.out.println("HAS GANADO!!!!");
+                return;
+            }
+            if ((tablero.personaje1.posicion.x==guardia1.x)&&(tablero.personaje1.posicion.y==guardia1.y)
+                    ||(tablero.personaje1.posicion.x==guardia2.x)&&(tablero.personaje1.posicion.y==guardia2.y)
+                    ||(tablero.personaje1.posicion.x==guardia3.x)&&(tablero.personaje1.posicion.y==guardia3.y)) {
+                System.out.println("END GAME!");
                 return;
             }
         } while ((!tablero.EndGame()) && (contador != 30));
