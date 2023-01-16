@@ -7,8 +7,8 @@ public class Carcel {
     public static void main(String[] args) {
         //creacion de 3 guardias
         Guardia guardia1 = new Guardia(0, 0);
-        Guardia guardia2 = new Guardia(0, 0);
-        Guardia guardia3 = new Guardia(0, 0);
+        Guardia guardia2 = new Guardia(-1, -1);
+        Guardia guardia3 = new Guardia(-1, -1);
         System.out.println("Elige el nivel de dificultad(facil, medio, dificil):");
         System.out.println("si lo escribes mal se te asigna por defecto el modo dificl asique atento a lo que escribes :)");
         Scanner sc = new Scanner(System.in);
