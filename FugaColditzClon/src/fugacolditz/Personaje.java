@@ -25,123 +25,26 @@ public class Personaje {
             switch (direccion.toUpperCase()) {
                 case "W":
                     //swith COmprobacion // MOVER ARRIBA
-                    if (tabla.tablero[posicion.x - 1][posicion.y].equals("G")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x - 1][posicion.y] = "O";
-                        tabla.perder = true;
-
-                    } else if (tabla.tablero[posicion.x - 1][posicion.y].equals("X")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x - 1][posicion.y] = "O";
-                        this.posicion = new Posicion(posicion.x - 1, posicion.y);
-
-                    }
-                    for (int i = 0; i < herramientas.length; i++) {
-                        if (tabla.tablero[posicion.x - 1][posicion.y].equals(herramientas[i])) {
-                            // ES UNA HERRAMIENTA
-                            if (recogerHerramienta(posicion.x - 1, posicion.y, tabla)) {
-                                tabla.tablero[posicion.x][posicion.y] = "X";
-                                tabla.tablero[posicion.x - 1][posicion.y] = "O";
-                                this.posicion = new Posicion(posicion.x - 1, posicion.y);
-                            } else {
-                                System.out.println("HAS FALLADO");
-                            }
-                        }
-                    }
+                    movUp(tabla);
                     break;
 
                 case "A":
                     //MOVIMIENTO IZQUIERDA
-                    if (tabla.tablero[posicion.x][posicion.y - 1].equals("G")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x][posicion.y - 1] = "O";
-                        this.posicion = new Posicion(posicion.x, posicion.y - 1);
-                        tabla.perder = true;
-
-                    } else if (tabla.tablero[posicion.x][posicion.y - 1].equals("X")) { /// x=1 y=0
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x][posicion.y - 1] = "O";
-                        this.posicion = new Posicion(posicion.x, posicion.y - 1);
-
-                    }
-                    for (int a = 0; a < herramientas.length; a++) {
-                        // ES UNA HERRAMIENTA
-                        if (tabla.tablero[posicion.x][posicion.y - 1].equals(herramientas[a])) {
-                            if (recogerHerramienta(posicion.x, posicion.y - 1, tabla)) {
-                                tabla.tablero[posicion.x][posicion.y] = "X";
-                                tabla.tablero[posicion.x][posicion.y - 1] = "O";
-                                this.posicion = new Posicion(posicion.x, posicion.y - 1);
-                            } else {
-                                System.out.println("HAS FALLADO");
-                            }
-                        }
-                    }
+                    moveLeft(tabla);
                     break;
                 case "S":
                     //MOVIMIENTO ABAJO
-                    if (tabla.tablero[posicion.x + 1][posicion.y].equals("G")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x + 1][posicion.y] = "O";
-                        this.posicion = new Posicion(posicion.x + 1, posicion.y);
-                        tabla.perder = true;
-
-                    } else if (tabla.tablero[posicion.x + 1][posicion.y].equals("X")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x + 1][posicion.y] = "O";
-                        this.posicion = new Posicion(posicion.x + 1, posicion.y);
-
-                    }
-
-                    for (int i = 0; i < herramientas.length; i++) {
-                        // HERRAMIENTA
-                        if (tabla.tablero[posicion.x + 1][posicion.y].equals(herramientas[i])) {
-                            if (tabla.tablero[posicion.x + 1][posicion.y].equals(herramientas[i])) {
-                                if (recogerHerramienta(posicion.x + 1, posicion.y, tabla)) {
-                                    tabla.tablero[posicion.x][posicion.y] = "X";
-                                    tabla.tablero[posicion.x + 1][posicion.y] = "O";
-                                    this.posicion = new Posicion(posicion.x + 1, posicion.y);
-
-                                } else {
-                                    System.out.println("HAS FALLADO");
-                                }
-                            }
-                        }
-                    }
-
+                    movDown(tabla);
                     break;
 
                 case "D"://derecha
-                    if (tabla.tablero[posicion.x][posicion.y + 1].equals("G")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x][posicion.y + 1] = "O";
-                        this.posicion = new Posicion(posicion.x, posicion.y + 1);
-                        tabla.perder = true;
-
-                    } else if (tabla.tablero[posicion.x][posicion.y + 1].equals("X")) {
-                        tabla.tablero[posicion.x][posicion.y] = "X";
-                        tabla.tablero[posicion.x][posicion.y + 1] = "O";
-                        this.posicion = new Posicion(posicion.x, posicion.y + 1);
-
-                    }
-                    for (int i = 0; i < herramientas.length; i++) {
-                        // ES UNA HERRAMIENTA
-                        if (tabla.tablero[posicion.x][posicion.y + 1].equals(herramientas[i])) {
-                            if (recogerHerramienta(posicion.x, posicion.y + 1, tabla)) {
-                                tabla.tablero[posicion.x][posicion.y] = "X";
-                                tabla.tablero[posicion.x][posicion.y + 1] = "O";
-                                this.posicion = new Posicion(posicion.x, posicion.y + 1);
-                            } else {
-                                System.out.println("HAS FALLADO");
-                            }
-                        }
-                    }
-
+                    movRight(tabla);
                     break;
                 default:
                     System.out.println("Por favor inserta una de las letras de la Cruceta de direccion");
                     System.out.println("A que posicion quieres moverte?(W,A,S,D): ");
                     String mov = sc.next();
-                    mover(mov,tabla);
+                    mover(mov, tabla);
                     break;
 
             }
@@ -151,6 +54,95 @@ public class Personaje {
         }
 
     }
+
+    private void movDown(Matriz tabla) {
+        if (tabla.tablero[posicion.x - 1][posicion.y].equals("P") ||
+                tabla.tablero[posicion.x - 1][posicion.y].equals("A") ||
+                tabla.tablero[posicion.x - 1][posicion.y].equals("U")) {
+            if (recogerHerramienta(posicion.x + 1, posicion.y, tabla)) {
+                tabla.tablero[posicion.x][posicion.y] = "X";
+                tabla.tablero[posicion.x + 1][posicion.y] = "O";
+                this.posicion = new Posicion(posicion.x + 1, posicion.y);
+            }
+        } else if (tabla.tablero[posicion.x + 1][posicion.y].equals("X")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x + 1][posicion.y] = "O";
+            this.posicion = new Posicion(posicion.x + 1, posicion.y);
+        } else if (tabla.tablero[posicion.x + 1][posicion.y].equals("G")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x + 1][posicion.y] = "O";
+            tabla.perder = true;
+        }
+    }
+
+    private void movUp(Matriz tabla) {
+        if (tabla.tablero[posicion.x - 1][posicion.y].equals("P") ||
+                tabla.tablero[posicion.x - 1][posicion.y].equals("A") ||
+                tabla.tablero[posicion.x - 1][posicion.y].equals("U")) {
+            if (recogerHerramienta(posicion.x, posicion.y - 1, tabla)) {
+                tabla.tablero[posicion.x][posicion.y] = "X";
+                tabla.tablero[posicion.x - 1][posicion.y] = "O";
+                this.posicion = new Posicion(posicion.x - 1, posicion.y);
+            }
+
+        } else if (tabla.tablero[posicion.x - 1][posicion.y].equals("X")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x - 1][posicion.y] = "O";
+            this.posicion = new Posicion(posicion.x - 1, posicion.y);
+        } else if (tabla.tablero[posicion.x - 1][posicion.y].equals("G")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x - 1][posicion.y] = "O";
+            tabla.perder = true;
+        }
+    }
+
+    private void moveLeft(Matriz tabla) {
+        if (tabla.tablero[posicion.x][posicion.y - 1].equals("P") ||
+                tabla.tablero[posicion.x][posicion.y - 1].equals("A") ||
+                tabla.tablero[posicion.x][posicion.y - 1].equals("U")) {
+
+            if (recogerHerramienta(posicion.x, posicion.y - 1, tabla)) {
+                tabla.tablero[posicion.x][posicion.y] = "X";
+                tabla.tablero[posicion.x][posicion.y - 1] = "O";
+                this.posicion = new Posicion(posicion.x, posicion.y - 1);
+            }
+        } else if (tabla.tablero[posicion.x][posicion.y - 1].equals("X")) { /// x=1 y=0
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x][posicion.y - 1] = "O";
+            this.posicion = new Posicion(posicion.x, posicion.y - 1);
+
+        } else if (tabla.tablero[posicion.x][posicion.y - 1].equals("G")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x][posicion.y - 1] = "O";
+            this.posicion = new Posicion(posicion.x, posicion.y - 1);
+            tabla.perder = true;
+
+        }
+
+    }
+
+    private void movRight(Matriz tabla) {
+        if (tabla.tablero[posicion.x][posicion.y + 1].equals("P") ||
+                tabla.tablero[posicion.x][posicion.y + 1].equals("A") ||
+                tabla.tablero[posicion.x][posicion.y + 1].equals("U")) {
+
+            if (recogerHerramienta(posicion.x, posicion.y + 1, tabla)) {
+                tabla.tablero[posicion.x][posicion.y] = "X";
+                tabla.tablero[posicion.x][posicion.y + 1] = "O";
+                this.posicion = new Posicion(posicion.x, posicion.y + 1);
+            }
+        } else if (tabla.tablero[posicion.x][posicion.y + 1].equals("X")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x][posicion.y + 1] = "O";
+            this.posicion = new Posicion(posicion.x, posicion.y + 1);
+        } else if (tabla.tablero[posicion.x][posicion.y + 1].equals("G")) {
+            tabla.tablero[posicion.x][posicion.y] = "X";
+            tabla.tablero[posicion.x][posicion.y + 1] = "O";
+            this.posicion = new Posicion(posicion.x, posicion.y + 1);
+            tabla.perder = true;
+        }
+    }
+
 
     public boolean recogerHerramienta(int x, int y, Matriz t) {
         try {
@@ -218,13 +210,13 @@ public class Personaje {
                 return true;
             }
 
-            
+
         } catch (InputMismatchException e) {
             System.out.println("Un numero del uno al 3 porfavor...");
             recogerHerramienta(x, y, t);
         }
-        
-        return false;        
+
+        return false;
     }
 
 }
