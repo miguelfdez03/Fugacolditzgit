@@ -56,9 +56,9 @@ public class Personaje {
     }
 
     private void movDown(Matriz tabla) {
-        if (tabla.tablero[posicion.x - 1][posicion.y].equals("P") ||
-                tabla.tablero[posicion.x - 1][posicion.y].equals("A") ||
-                tabla.tablero[posicion.x - 1][posicion.y].equals("U")) {
+        if (tabla.tablero[posicion.x + 1][posicion.y].equals("P") ||
+                tabla.tablero[posicion.x + 1][posicion.y].equals("A") ||
+                tabla.tablero[posicion.x + 1][posicion.y].equals("U")) {
             if (recogerHerramienta(posicion.x + 1, posicion.y, tabla)) {
                 tabla.tablero[posicion.x][posicion.y] = "X";
                 tabla.tablero[posicion.x + 1][posicion.y] = "O";
@@ -79,7 +79,7 @@ public class Personaje {
         if (tabla.tablero[posicion.x - 1][posicion.y].equals("P") ||
                 tabla.tablero[posicion.x - 1][posicion.y].equals("A") ||
                 tabla.tablero[posicion.x - 1][posicion.y].equals("U")) {
-            if (recogerHerramienta(posicion.x, posicion.y - 1, tabla)) {
+            if (recogerHerramienta(posicion.x - 1, posicion.y, tabla)) {
                 tabla.tablero[posicion.x][posicion.y] = "X";
                 tabla.tablero[posicion.x - 1][posicion.y] = "O";
                 this.posicion = new Posicion(posicion.x - 1, posicion.y);
