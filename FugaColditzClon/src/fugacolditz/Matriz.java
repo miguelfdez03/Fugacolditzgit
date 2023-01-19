@@ -38,33 +38,46 @@ public class Matriz {
         boolean comprobar = false;
 
         while (!comprobar) {
+            
             int x = (int) (Math.random() * 10);
             int y = (int) (Math.random() * 10);
-
             switch (herramienta.tipo) {
 
-                case "Uniforme":
-
-                    
+                case "Uniforme":                    
+                   do{
                     try {
-                        do{
-
-                            tablero[x][y] = "U";
-                            tablero[x + 1][y] = "U";
-                            tablero[x - 1][y] = "U";
-                            Posicion p = new Posicion(x, y);
-                            Posicion p2 = new Posicion(x + 1, y);
-                            Posicion p3 = new Posicion(x - 1, y);
-                            herramienta.posicionHerramienta.add(p);
-                            herramienta.posicionHerramienta.add(p2);
-                            herramienta.posicionHerramienta.add(p3);
-                            this.herramientas.add(herramienta);
-                            comprobar = true;
-                                        
-                       }while(!comprobar); 
+                            if(comprobarPosition(x-2, y)){
+                                if(comprobarPosition(x+2, y)){
+                                    if(comprobarPosition(x+1, y+1)){
+                                        if(comprobarPosition(x, y+1)){
+                                            if(comprobarPosition(x-1, y+1)){
+                                                if(comprobarPosition(x+1, y-1)){
+                                                    if(comprobarPosition(x, y-1)){
+                                                        if(comprobarPosition(x-1, y-1)){
+                                                            tablero[x][y] = "U";
+                                                            tablero[x + 1][y] = "U";
+                                                            tablero[x - 1][y] = "U";
+                                                            Posicion p = new Posicion(x, y);
+                                                            Posicion p2 = new Posicion(x + 1, y);
+                                                            Posicion p3 = new Posicion(x - 1, y);
+                                                            herramienta.posicionHerramienta.add(p);
+                                                            herramienta.posicionHerramienta.add(p2);
+                                                            herramienta.posicionHerramienta.add(p3);
+                                                            this.herramientas.add(herramienta);
+                                                            comprobar = true;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
                     } catch (ArrayIndexOutOfBoundsException n) {
-                        System.out.println("Aqui no entra");
+
                     }
+                    }while(!comprobar); 
                     break;
 
                 case "Alicates":
@@ -169,25 +182,25 @@ public class Matriz {
                     break;
 
                 case "Pasaporte":
-                    try{    
-                    do{
-                            if(tablero[x+1][y].equalsIgnoreCase("X")){
-                                if(tablero[x-1][y].equalsIgnoreCase("X")){
-                                    if(tablero[x][y+1].equalsIgnoreCase("X")){
-                                        if(tablero[x][y-1].equalsIgnoreCase("X")){
-                                            tablero[x][y] = "P";
-                                            Posicion p = new Posicion(x, y);
-                                            herramienta.posicionHerramienta.add(p);
+                    try{
+                 if (comprobarPosition(x, y)) {
+                        if (comprobarPosition(x - 1, y)) {
+                            if (comprobarPosition(x + 1, y)) {
+                                if (comprobarPosition(x, y + 1)) {
+                                    if (comprobarPosition(x, y - 1)) {
+                                        tablero[x][y] = "P";
+                                        Posicion p = new Posicion(x, y);
+                                        herramienta.posicionHerramienta.add(p);
                                             this.herramientas.add(herramienta);
                                             comprobar = true;
-                                        }
                                     }
                                 }
                             }
-                        }while(!comprobar);
-                    }catch (ArrayIndexOutOfBoundsException n) {
-                        System.out.println("Aqui no entra");
+                        }
                     }
+                    }catch(ArrayIndexOutOfBoundsException a){
+                            
+                            }
                     break;
 
             }
@@ -297,29 +310,6 @@ public class Matriz {
 
         return valido;
 
-    }
-    
-    
-    
-    public boolean comprobaralrededor(int x, int y){
-        //devolvemos true cuando los 9 casilleros de la coordenada y su alrededor sean X
-        boolean valido2 = false;
-        int contador=0;
-        for (int i = x-1; i <=x+1; i++) {
-            for (int j = y-1; j <=y+1; j++) {
-                if(tablero[i][j].equalsIgnoreCase("X")){
-                    contador++;
-                }else{
-                    contador--;
-                }
-            }
-        }
-        if (contador!=9) {
-            valido2=false;
-        }else{
-            valido2=true;
-        }
-        return valido2;
     }
 
     public boolean EndGame() {

@@ -56,13 +56,15 @@ public class Personaje {
     }
 
     private void movDown(Matriz tabla) {
-        if (tabla.tablero[posicion.x - 1][posicion.y].equals("P") ||
-                tabla.tablero[posicion.x - 1][posicion.y].equals("A") ||
-                tabla.tablero[posicion.x - 1][posicion.y].equals("U")) {
+        if (tabla.tablero[posicion.x + 1][posicion.y].equals("P") ||
+                tabla.tablero[posicion.x + 1][posicion.y].equals("A") ||
+                tabla.tablero[posicion.x + 1][posicion.y].equals("U")) {
             if (recogerHerramienta(posicion.x + 1, posicion.y, tabla)) {
                 tabla.tablero[posicion.x][posicion.y] = "X";
                 tabla.tablero[posicion.x + 1][posicion.y] = "O";
                 this.posicion = new Posicion(posicion.x + 1, posicion.y);
+            }else{
+                System.out.println("Has fallado");
             }
         } else if (tabla.tablero[posicion.x + 1][posicion.y].equals("X")) {
             tabla.tablero[posicion.x][posicion.y] = "X";
@@ -79,10 +81,12 @@ public class Personaje {
         if (tabla.tablero[posicion.x - 1][posicion.y].equals("P") ||
                 tabla.tablero[posicion.x - 1][posicion.y].equals("A") ||
                 tabla.tablero[posicion.x - 1][posicion.y].equals("U")) {
-            if (recogerHerramienta(posicion.x, posicion.y - 1, tabla)) {
+            if (recogerHerramienta(posicion.x - 1, posicion.y, tabla)) {
                 tabla.tablero[posicion.x][posicion.y] = "X";
                 tabla.tablero[posicion.x - 1][posicion.y] = "O";
                 this.posicion = new Posicion(posicion.x - 1, posicion.y);
+            }else{
+                System.out.println("Has fallado");
             }
 
         } else if (tabla.tablero[posicion.x - 1][posicion.y].equals("X")) {
@@ -105,6 +109,8 @@ public class Personaje {
                 tabla.tablero[posicion.x][posicion.y] = "X";
                 tabla.tablero[posicion.x][posicion.y - 1] = "O";
                 this.posicion = new Posicion(posicion.x, posicion.y - 1);
+            }else{
+                System.out.println("Has fallado");
             }
         } else if (tabla.tablero[posicion.x][posicion.y - 1].equals("X")) { /// x=1 y=0
             tabla.tablero[posicion.x][posicion.y] = "X";
@@ -130,6 +136,8 @@ public class Personaje {
                 tabla.tablero[posicion.x][posicion.y] = "X";
                 tabla.tablero[posicion.x][posicion.y + 1] = "O";
                 this.posicion = new Posicion(posicion.x, posicion.y + 1);
+            }else{
+                System.out.println("Has fallado");
             }
         } else if (tabla.tablero[posicion.x][posicion.y + 1].equals("X")) {
             tabla.tablero[posicion.x][posicion.y] = "X";
