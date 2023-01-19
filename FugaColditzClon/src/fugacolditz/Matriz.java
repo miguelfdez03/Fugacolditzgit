@@ -62,7 +62,7 @@ public class Matriz {
                                                         herramienta.posicionHerramienta.add(p3);
                                                         this.herramientas.add(herramienta);
                                                         if (tablero[x][y].equalsIgnoreCase("X")&&tablero[x+1][y].equalsIgnoreCase("X")
-                                                                &&tablero[x-1][y].equalsIgnoreCase("X")) {
+                                                            &&tablero[x-1][y].equalsIgnoreCase("X")) {
                                                             tablero[x][y] = "U";
                                                             tablero[x + 1][y] = "U";
                                                             tablero[x - 1][y] = "U";
