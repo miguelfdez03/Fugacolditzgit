@@ -59,10 +59,10 @@ public class Carcel {
                 System.out.println("HAS GANADO!!!!");
                 System.exit(0);
             }
-            if ((tablero.personaje1.posicion.x==guardia1.x)&&(tablero.personaje1.posicion.y==guardia1.y)
-                    ||(tablero.personaje1.posicion.x==guardia2.x)&&(tablero.personaje1.posicion.y==guardia2.y)
-                    ||(tablero.personaje1.posicion.x==guardia3.x)&&(tablero.personaje1.posicion.y==guardia3.y)) {
-                tablero.perder=true;
+            if ((tablero.personaje1.posicion.x == guardia1.x) && (tablero.personaje1.posicion.y == guardia1.y)
+                    || (tablero.personaje1.posicion.x == guardia2.x) && (tablero.personaje1.posicion.y == guardia2.y)
+                    || (tablero.personaje1.posicion.x == guardia3.x) && (tablero.personaje1.posicion.y == guardia3.y)) {
+                tablero.perder = true;
             }
         } while ((!tablero.EndGame()) && (contador != 30));
         System.out.println("END GAME!");

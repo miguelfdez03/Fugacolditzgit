@@ -38,33 +38,36 @@ public class Matriz {
         boolean comprobar = false;
 
         while (!comprobar) {
-            
+
             int x = (int) (Math.random() * 10);
             int y = (int) (Math.random() * 10);
             switch (herramienta.tipo) {
 
-                case "Uniforme":                    
-                   do{
+                case "Uniforme":
+
                     try {
-                            if(comprobarPosition(x-2, y)){
-                                if(comprobarPosition(x+2, y)){
-                                    if(comprobarPosition(x+1, y+1)){
-                                        if(comprobarPosition(x, y+1)){
-                                            if(comprobarPosition(x-1, y+1)){
-                                                if(comprobarPosition(x+1, y-1)){
-                                                    if(comprobarPosition(x, y-1)){
-                                                        if(comprobarPosition(x-1, y-1)){
+                        if (comprobarPosition(x - 2, y)) {
+                            if (comprobarPosition(x + 2, y)) {
+                                if (comprobarPosition(x + 1, y + 1)) {
+                                    if (comprobarPosition(x, y + 1)) {
+                                        if (comprobarPosition(x - 1, y + 1)) {
+                                            if (comprobarPosition(x + 1, y - 1)) {
+                                                if (comprobarPosition(x, y - 1)) {
+                                                    if (comprobarPosition(x - 1, y - 1)) {
+                                                        Posicion p = new Posicion(x, y);
+                                                        Posicion p2 = new Posicion(x + 1, y);
+                                                        Posicion p3 = new Posicion(x - 1, y);
+                                                        herramienta.posicionHerramienta.add(p);
+                                                        herramienta.posicionHerramienta.add(p2);
+                                                        herramienta.posicionHerramienta.add(p3);
+                                                        this.herramientas.add(herramienta);
+                                                        if (tablero[x][y].equalsIgnoreCase("X")&&tablero[x+1][y].equalsIgnoreCase("X")
+                                                            &&tablero[x-1][y].equalsIgnoreCase("X")) {
                                                             tablero[x][y] = "U";
                                                             tablero[x + 1][y] = "U";
                                                             tablero[x - 1][y] = "U";
-                                                            Posicion p = new Posicion(x, y);
-                                                            Posicion p2 = new Posicion(x + 1, y);
-                                                            Posicion p3 = new Posicion(x - 1, y);
-                                                            herramienta.posicionHerramienta.add(p);
-                                                            herramienta.posicionHerramienta.add(p2);
-                                                            herramienta.posicionHerramienta.add(p3);
-                                                            this.herramientas.add(herramienta);
                                                             comprobar = true;
+                                                        }else {
                                                         }
                                                     }
                                                 }
@@ -72,12 +75,11 @@ public class Matriz {
                                         }
                                     }
                                 }
-                                
                             }
-                    } catch (ArrayIndexOutOfBoundsException n) {
 
+                        }
+                    } catch (ArrayIndexOutOfBoundsException n) {
                     }
-                    }while(!comprobar); 
                     break;
 
                 case "Alicates":
@@ -182,25 +184,25 @@ public class Matriz {
                     break;
 
                 case "Pasaporte":
-                    try{
-                 if (comprobarPosition(x, y)) {
-                        if (comprobarPosition(x - 1, y)) {
-                            if (comprobarPosition(x + 1, y)) {
-                                if (comprobarPosition(x, y + 1)) {
-                                    if (comprobarPosition(x, y - 1)) {
-                                        tablero[x][y] = "P";
-                                        Posicion p = new Posicion(x, y);
-                                        herramienta.posicionHerramienta.add(p);
+                    try {
+                        if (comprobarPosition(x, y)) {
+                            if (comprobarPosition(x - 1, y)) {
+                                if (comprobarPosition(x + 1, y)) {
+                                    if (comprobarPosition(x, y + 1)) {
+                                        if (comprobarPosition(x, y - 1)) {
+                                            tablero[x][y] = "P";
+                                            Posicion p = new Posicion(x, y);
+                                            herramienta.posicionHerramienta.add(p);
                                             this.herramientas.add(herramienta);
                                             comprobar = true;
+                                        }
                                     }
                                 }
                             }
                         }
+                    } catch (ArrayIndexOutOfBoundsException a) {
+
                     }
-                    }catch(ArrayIndexOutOfBoundsException a){
-                            
-                            }
                     break;
 
             }
@@ -236,8 +238,8 @@ public class Matriz {
             int y = (int) (Math.random() * 10);
 
             if (comprobarPosition(x, y)) {
-                g.x=x;
-                g.y=y;
+                g.x = x;
+                g.y = y;
                 tablero[x][y] = "G";
                 valido = true;
             }
@@ -245,52 +247,56 @@ public class Matriz {
     }
 
     public void moverG(Matriz matriz, Guardia g) {
-        try{
-        int ale = (int) ((Math.random() * 4 + 1));
-        switch (ale) {
-            case 1:
-                //arriba
-                if((matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("U"))||(matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("A"))
-                        ||(matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("P"))||(matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("G"))){
-                    moverG(matriz,g);
-                }else{
-                matriz.tablero[g.x - 1][g.y] = "G";
-                matriz.tablero[g.x][g.y] = "X";
-                g.x = g.x - 1;}
-                break;
-            case 2:
-                //abajo
-                if((matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("U"))||(matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("A"))
-                        ||(matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("P"))||(matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("G"))){
-                    moverG(matriz,g);
-                }else{
-                matriz.tablero[g.x + 1][g.y] = "G";
-                matriz.tablero[g.x][g.y] = "X";
-                g.x = g.x + 1;
-                break;}
-            case 3:
-                //izquierda
-                if((matriz.tablero[g.x][g.y-1].equalsIgnoreCase("U"))||(matriz.tablero[g.x][g.y-1].equalsIgnoreCase("A"))
-                        ||(matriz.tablero[g.x][g.y-1].equalsIgnoreCase("P"))||(matriz.tablero[g.x][g.y-1].equalsIgnoreCase("G"))){
-                    moverG(matriz,g);
-                }else{
-                matriz.tablero[g.x][g.y - 1] = "G";
-                matriz.tablero[g.x][g.y] = "X";
-                g.y = g.y - 1;
-                break;}
-            case 4:
-                //derecha
-                if((matriz.tablero[g.x][g.y+1].equalsIgnoreCase("U"))||(matriz.tablero[g.x][g.y+1].equalsIgnoreCase("A"))
-                        ||(matriz.tablero[g.x][g.y+1].equalsIgnoreCase("P"))||(matriz.tablero[g.x][g.y+1].equalsIgnoreCase("G"))){
-                    moverG(matriz,g);
-                }else{
-                matriz.tablero[g.x][g.y + 1] = "G";
-                matriz.tablero[g.x][g.y] = "X";
-                g.y = g.y + 1;}
-                break;
-        }
-        }catch(ArrayIndexOutOfBoundsException e){
-            moverG(matriz,g);
+        try {
+            int ale = (int) ((Math.random() * 4 + 1));
+            switch (ale) {
+                case 1:
+                    //arriba
+                    if ((matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("U")) || (matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("A"))
+                            || (matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("P")) || (matriz.tablero[g.x - 1][g.y].equalsIgnoreCase("G"))) {
+                        moverG(matriz, g);
+                    } else {
+                        matriz.tablero[g.x - 1][g.y] = "G";
+                        matriz.tablero[g.x][g.y] = "X";
+                        g.x = g.x - 1;
+                    }
+                    break;
+                case 2:
+                    //abajo
+                    if ((matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("U")) || (matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("A"))
+                            || (matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("P")) || (matriz.tablero[g.x + 1][g.y].equalsIgnoreCase("G"))) {
+                        moverG(matriz, g);
+                    } else {
+                        matriz.tablero[g.x + 1][g.y] = "G";
+                        matriz.tablero[g.x][g.y] = "X";
+                        g.x = g.x + 1;
+                        break;
+                    }
+                case 3:
+                    //izquierda
+                    if ((matriz.tablero[g.x][g.y - 1].equalsIgnoreCase("U")) || (matriz.tablero[g.x][g.y - 1].equalsIgnoreCase("A"))
+                            || (matriz.tablero[g.x][g.y - 1].equalsIgnoreCase("P")) || (matriz.tablero[g.x][g.y - 1].equalsIgnoreCase("G"))) {
+                        moverG(matriz, g);
+                    } else {
+                        matriz.tablero[g.x][g.y - 1] = "G";
+                        matriz.tablero[g.x][g.y] = "X";
+                        g.y = g.y - 1;
+                        break;
+                    }
+                case 4:
+                    //derecha
+                    if ((matriz.tablero[g.x][g.y + 1].equalsIgnoreCase("U")) || (matriz.tablero[g.x][g.y + 1].equalsIgnoreCase("A"))
+                            || (matriz.tablero[g.x][g.y + 1].equalsIgnoreCase("P")) || (matriz.tablero[g.x][g.y + 1].equalsIgnoreCase("G"))) {
+                        moverG(matriz, g);
+                    } else {
+                        matriz.tablero[g.x][g.y + 1] = "G";
+                        matriz.tablero[g.x][g.y] = "X";
+                        g.y = g.y + 1;
+                    }
+                    break;
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            moverG(matriz, g);
         }
     }
 
