@@ -43,24 +43,28 @@ public class Matriz {
 
             switch (herramienta.tipo) {
 
-                case "Pasaporte":
+                case "Uniforme":
 
-                    if (comprobarPosition(x, y)) {
-                        if (comprobarPosition(x - 1, y)) {
-                            if (comprobarPosition(x + 1, y)) {
-                                if (comprobarPosition(x, y + 1)) {
-                                    if (comprobarPosition(x, y - 1)) {
-                                        tablero[x][y] = "P";
-                                        Posicion p = new Posicion(x, y);
-                                        herramienta.posicionHerramienta.add(p);
-                                        this.herramientas.add(herramienta);
-                                        comprobar = true;
-                                    }
-                                }
-                            }
-                        }
+                    
+                    try {
+                        do{
+
+                            tablero[x][y] = "U";
+                            tablero[x + 1][y] = "U";
+                            tablero[x - 1][y] = "U";
+                            Posicion p = new Posicion(x, y);
+                            Posicion p2 = new Posicion(x + 1, y);
+                            Posicion p3 = new Posicion(x - 1, y);
+                            herramienta.posicionHerramienta.add(p);
+                            herramienta.posicionHerramienta.add(p2);
+                            herramienta.posicionHerramienta.add(p3);
+                            this.herramientas.add(herramienta);
+                            comprobar = true;
+                                        
+                       }while(!comprobar); 
+                    } catch (ArrayIndexOutOfBoundsException n) {
+                        System.out.println("Aqui no entra");
                     }
-                    ;
                     break;
 
                 case "Alicates":
@@ -164,359 +168,25 @@ public class Matriz {
                     }
                     break;
 
-                case "Uniforme":
-
-                    if (comprobarPosition(x, y)) {
-                        if (comprobarPosition(x - 1, y)) {
-                            if (comprobarPosition(x + 1, y)) {
-                                if (comprobarPosition(x, y + 1)) {
-                                    if (comprobarPosition(x, y - 1)) {
-                                        try {
-                                            if (tablero[x - 1][y].equals("X")) {
-                                                if (comprobarPosition(x - 2, y)) {
-                                                    if (comprobarPosition(x - 1, y + 1)) {
-                                                        if (comprobarPosition(x - 1, y - 1)) {
-
-                                                            try {
-                                                                if (tablero[x - 2][y].equals("X")) {
-                                                                    if (comprobarPosition(x - 3, y)) {
-                                                                        if (comprobarPosition(x - 2, y + 1)) {
-                                                                            if (comprobarPosition(x - 2, y - 1)) {
-                                                                                tablero[x][y] = "U";
-                                                                                tablero[x - 1][y] = "U";
-                                                                                tablero[x - 2][y] = "U";
-                                                                                Posicion p = new Posicion(x, y);
-                                                                                Posicion p2 = new Posicion(x - 1, y);
-                                                                                Posicion p3 = new Posicion(x - 2, y);
-                                                                                herramienta.posicionHerramienta.add(p);
-                                                                                herramienta.posicionHerramienta.add(p2);
-                                                                                herramienta.posicionHerramienta.add(p3);
-                                                                                this.herramientas.add(herramienta);
-                                                                                comprobar = true;
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            } catch (ArrayIndexOutOfBoundsException e) {
-                                                                try {
-                                                                    if (tablero[x - 1][y + 1].equals("X")) {
-                                                                        if (comprobarPosition(x - 2, y + 1)) {
-                                                                            if (comprobarPosition(x - 1, y + 2)) {
-                                                                                if (comprobarPosition(x, y + 1)) {
-                                                                                    if (comprobarPosition(x - 1, y)) {
-
-                                                                                        tablero[x][y] = "U";
-                                                                                        tablero[x - 1][y] = "U";
-                                                                                        tablero[x - 1][y + 1] = "U";
-                                                                                        Posicion p = new Posicion(x, y);
-                                                                                        Posicion p2 = new Posicion(x - 1, y);
-                                                                                        Posicion p3 = new Posicion(x - 1, y + 1);
-                                                                                        herramienta.posicionHerramienta.add(p);
-                                                                                        herramienta.posicionHerramienta.add(p2);
-                                                                                        herramienta.posicionHerramienta.add(p3);
-                                                                                        this.herramientas.add(herramienta);
-                                                                                        comprobar = true;
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                } catch (ArrayIndexOutOfBoundsException m) {
-                                                                    try {
-                                                                        if (tablero[x - 1][y - 1].equals("X")) {
-                                                                            if (comprobarPosition(x - 2, y - 1)) {
-                                                                                if (comprobarPosition(x - 1, y - 2)) {
-                                                                                    if (comprobarPosition(x, y - 1)) {
-                                                                                        if (comprobarPosition(x - 1, y)) {
-
-                                                                                            tablero[x][y] = "U";
-                                                                                            tablero[x - 1][y] = "U";
-                                                                                            tablero[x - 1][y - 1] = "U";
-                                                                                            Posicion p = new Posicion(x, y);
-                                                                                            Posicion p2 = new Posicion(x - 1, y);
-                                                                                            Posicion p3 = new Posicion(x - 1, y - 1);
-                                                                                            herramienta.posicionHerramienta.add(p);
-                                                                                            herramienta.posicionHerramienta.add(p2);
-                                                                                            herramienta.posicionHerramienta.add(p3);
-                                                                                            this.herramientas.add(herramienta);
-                                                                                            comprobar = true;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    } catch (ArrayIndexOutOfBoundsException n) {
-
-                                                                    }
-                                                                }
-                                                            }
-
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        } catch (ArrayIndexOutOfBoundsException e) {
-                                            // Esta fuera del array
-                                            try {
-                                                if (tablero[x + 1][y].equals("X")) {
-                                                    if (comprobarPosition(x + 2, y)) {
-                                                        if (comprobarPosition(x + 1, y + 1)) {
-                                                            if (comprobarPosition(x + 1, y - 1)) {
-                                                                try {
-                                                                    if (tablero[x + 2][y].equals("X")) {
-                                                                        if (comprobarPosition(x + 3, y)) {
-                                                                            if (comprobarPosition(x + 2, y + 1)) {
-                                                                                if (comprobarPosition(x + 2, y - 1)) {
-                                                                                    tablero[x][y] = "U";
-                                                                                    tablero[x + 1][y] = "U";
-                                                                                    tablero[x + 2][y] = "U";
-                                                                                    Posicion p = new Posicion(x, y);
-                                                                                    Posicion p2 = new Posicion(x + 1, y);
-                                                                                    Posicion p3 = new Posicion(x + 2, y);
-                                                                                    herramienta.posicionHerramienta.add(p);
-                                                                                    herramienta.posicionHerramienta.add(p2);
-                                                                                    herramienta.posicionHerramienta.add(p3);
-                                                                                    this.herramientas.add(herramienta);
-                                                                                    comprobar = true;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                } catch (ArrayIndexOutOfBoundsException e1) {
-                                                                    try {
-                                                                        if (tablero[x + 1][y - 1].equals("X")) {
-                                                                            if (comprobarPosition(x + 1, y + 2)) {
-                                                                                if (comprobarPosition(x + 2, y + 1)) {
-                                                                                    if (comprobarPosition(x, y + 1)) {
-                                                                                        if (comprobarPosition(x + 1, y)) {
-
-                                                                                            tablero[x][y] = "U";
-                                                                                            tablero[x - 1][y] = "U";
-                                                                                            tablero[x - 1][y + 1] = "U";
-                                                                                            Posicion p = new Posicion(x, y);
-                                                                                            Posicion p2 = new Posicion(x - 1, y);
-                                                                                            Posicion p3 = new Posicion(x - 1, y + 1);
-                                                                                            herramienta.posicionHerramienta.add(p);
-                                                                                            herramienta.posicionHerramienta.add(p2);
-                                                                                            herramienta.posicionHerramienta.add(p3);
-                                                                                            this.herramientas.add(herramienta);
-                                                                                            comprobar = true;
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    } catch (ArrayIndexOutOfBoundsException m) {
-                                                                        try {
-                                                                            if (tablero[x + 1][y + 1].equals("X")) {
-                                                                                if (comprobarPosition(x, y + 1)) {
-                                                                                    if (comprobarPosition(x + 1, y + 2)) {
-                                                                                        if (comprobarPosition(x + 2, y + 1)) {
-                                                                                            if (comprobarPosition(x + 1, y + 1)) {
-
-                                                                                                tablero[x][y] = "U";
-                                                                                                tablero[x + 1][y] = "U";
-                                                                                                tablero[x + 1][y + 1] = "U";
-                                                                                                Posicion p = new Posicion(x, y);
-                                                                                                Posicion p2 = new Posicion(x - 1, y);
-                                                                                                Posicion p3 = new Posicion(x - 1, y - 1);
-                                                                                                herramienta.posicionHerramienta.add(p);
-                                                                                                herramienta.posicionHerramienta.add(p2);
-                                                                                                herramienta.posicionHerramienta.add(p3);
-                                                                                                this.herramientas.add(herramienta);
-                                                                                                comprobar = true;
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        } catch (ArrayIndexOutOfBoundsException n) {
-
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            }
-                                                        }
-                                                    }
-                                                }
-
-                                            } catch (ArrayIndexOutOfBoundsException a) {
-
-                                                try {
-                                                    if (tablero[x][y - 1].equals("X")) {
-                                                        if (comprobarPosition(x, y - 2)) {
-                                                            if (comprobarPosition(x - 1, y - 1)) {
-                                                                if (comprobarPosition(x + 1, y - 1)) {
-                                                                    //AQUI VA
-                                                                    try {
-                                                                        if (tablero[x][y - 2].equals("X")) {
-                                                                            if (comprobarPosition(x, y - 3)) {
-                                                                                if (comprobarPosition(x - 2, y - 2)) {
-                                                                                    if (comprobarPosition(x + 1, y - 2)) {
-                                                                                        tablero[x][y] = "U";
-                                                                                        tablero[x][y - 1] = "U";
-                                                                                        tablero[x][y - 2] = "U";
-                                                                                        Posicion p = new Posicion(x, y);
-                                                                                        Posicion p2 = new Posicion(x, y - 1);
-                                                                                        Posicion p3 = new Posicion(x, y - 2);
-                                                                                        herramienta.posicionHerramienta.add(p);
-                                                                                        herramienta.posicionHerramienta.add(p2);
-                                                                                        herramienta.posicionHerramienta.add(p3);
-                                                                                        this.herramientas.add(herramienta);
-                                                                                        comprobar = true;
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    } catch (ArrayIndexOutOfBoundsException ee) {
-                                                                        try {
-                                                                            if (tablero[x - 1][y - 1].equals("X")) {
-                                                                                if (comprobarPosition(x - 2, y - 1)) {
-                                                                                    if (comprobarPosition(x - 1, y - 2)) {
-                                                                                        if (comprobarPosition(x - 1, y)) {
-                                                                                            if (comprobarPosition(x - 1, y - 1)) {
-
-                                                                                                tablero[x][y] = "U";
-                                                                                                tablero[x][y - 1] = "U";
-                                                                                                tablero[x - 1][y - 1] = "U";
-                                                                                                Posicion p = new Posicion(x, y);
-                                                                                                Posicion p2 = new Posicion(x, y - 1);
-                                                                                                Posicion p3 = new Posicion(x - 1, y - 1);
-                                                                                                herramienta.posicionHerramienta.add(p);
-                                                                                                herramienta.posicionHerramienta.add(p2);
-                                                                                                herramienta.posicionHerramienta.add(p3);
-                                                                                                this.herramientas.add(herramienta);
-                                                                                                comprobar = true;
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        } catch (ArrayIndexOutOfBoundsException m) {
-                                                                            try {
-                                                                                if (tablero[x + 1][y - 1].equals("X")) {
-                                                                                    if (comprobarPosition(x + 2, y - 1)) {
-                                                                                        if (comprobarPosition(x + 1, y - 2)) {
-                                                                                            if (comprobarPosition(x, y - 1)) {
-                                                                                                if (comprobarPosition(x + 1, y)) {
-
-                                                                                                    tablero[x][y] = "U";
-                                                                                                    tablero[x][y - 1] = "U";
-                                                                                                    tablero[x + 1][y - 1] = "U";
-                                                                                                    Posicion p = new Posicion(x, y);
-                                                                                                    Posicion p2 = new Posicion(x - 1, y);
-                                                                                                    Posicion p3 = new Posicion(x - 1, y - 1);
-                                                                                                    herramienta.posicionHerramienta.add(p);
-                                                                                                    herramienta.posicionHerramienta.add(p2);
-                                                                                                    herramienta.posicionHerramienta.add(p3);
-                                                                                                    this.herramientas.add(herramienta);
-                                                                                                    comprobar = true;
-                                                                                                }
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            } catch (ArrayIndexOutOfBoundsException n) {
-
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                } catch (ArrayIndexOutOfBoundsException u) {
-
-                                                    if (tablero[x][y + 1].equals("X")) {
-                                                        if (comprobarPosition(x, y + 2)) {
-                                                            if (comprobarPosition(x - 1, y + 1)) {
-                                                                if (comprobarPosition(x + 1, y + 1)) {
-                                                                    // AQUI VA
-                                                                    try {
-                                                                        if (tablero[x][y + 2].equals("X")) {
-                                                                            if (comprobarPosition(x, y + 3)) {
-                                                                                if (comprobarPosition(x - 1, y + 2)) {
-                                                                                    if (comprobarPosition(x + 1, y + 2)) {
-                                                                                        tablero[x][y] = "U";
-                                                                                        tablero[x][y + 1] = "U";
-                                                                                        tablero[x][y + 2] = "U";
-                                                                                        Posicion p = new Posicion(x, y);
-                                                                                        Posicion p2 = new Posicion(x, y + 1);
-                                                                                        Posicion p3 = new Posicion(x, y + 2);
-                                                                                        herramienta.posicionHerramienta.add(p);
-                                                                                        herramienta.posicionHerramienta.add(p2);
-                                                                                        herramienta.posicionHerramienta.add(p3);
-                                                                                        this.herramientas.add(herramienta);
-                                                                                        comprobar = true;
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    } catch (ArrayIndexOutOfBoundsException eee) {
-                                                                        try {
-                                                                            if (tablero[x - 1][y + 1].equals("X")) {
-                                                                                if (comprobarPosition(x - 2, y + 1)) {
-                                                                                    if (comprobarPosition(x - 1, y + 2)) {
-                                                                                        if (comprobarPosition(x, y + 1)) {
-                                                                                            if (comprobarPosition(x - 1, y)) {
-
-                                                                                                tablero[x][y] = "U";
-                                                                                                tablero[x][y + 1] = "U";
-                                                                                                tablero[x - 1][y + 1] = "U";
-                                                                                                Posicion p = new Posicion(x, y);
-                                                                                                Posicion p2 = new Posicion(x, y + 1);
-                                                                                                Posicion p3 = new Posicion(x - 1, y + 1);
-                                                                                                herramienta.posicionHerramienta.add(p);
-                                                                                                herramienta.posicionHerramienta.add(p2);
-                                                                                                herramienta.posicionHerramienta.add(p3);
-                                                                                                this.herramientas.add(herramienta);
-                                                                                                comprobar = true;
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        } catch (ArrayIndexOutOfBoundsException m) {
-                                                                            try {
-                                                                                if (tablero[x + 1][y + 1].equals("X")) {
-                                                                                    if (comprobarPosition(x + 2, y + 1)) {
-                                                                                        if (comprobarPosition(x + 1, y + 2)) {
-                                                                                            if (comprobarPosition(x, y + 1)) {
-                                                                                                if (comprobarPosition(x + 1, y - 1)) {
-
-                                                                                                    tablero[x][y] = "U";
-                                                                                                    tablero[x][y + 1] = "U";
-                                                                                                    tablero[x + 1][y + 1] = "U";
-                                                                                                    Posicion p = new Posicion(x, y);
-                                                                                                    Posicion p2 = new Posicion(x, y + 1);
-                                                                                                    Posicion p3 = new Posicion(x + 1, y + 1);
-                                                                                                    herramienta.posicionHerramienta.add(p);
-                                                                                                    herramienta.posicionHerramienta.add(p2);
-                                                                                                    herramienta.posicionHerramienta.add(p3);
-                                                                                                    this.herramientas.add(herramienta);
-                                                                                                    comprobar = true;
-                                                                                                }
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            } catch (ArrayIndexOutOfBoundsException n) {
-
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
+                case "Pasaporte":
+                    try{    
+                    do{
+                            if(tablero[x+1][y].equalsIgnoreCase("X")){
+                                if(tablero[x-1][y].equalsIgnoreCase("X")){
+                                    if(tablero[x][y+1].equalsIgnoreCase("X")){
+                                        if(tablero[x][y-1].equalsIgnoreCase("X")){
+                                            tablero[x][y] = "P";
+                                            Posicion p = new Posicion(x, y);
+                                            herramienta.posicionHerramienta.add(p);
+                                            this.herramientas.add(herramienta);
+                                            comprobar = true;
                                         }
                                     }
                                 }
                             }
-                        }
+                        }while(!comprobar);
+                    }catch (ArrayIndexOutOfBoundsException n) {
+                        System.out.println("Aqui no entra");
                     }
                     break;
 
@@ -628,6 +298,8 @@ public class Matriz {
         return valido;
 
     }
+    
+    
     
     public boolean comprobaralrededor(int x, int y){
         //devolvemos true cuando los 9 casilleros de la coordenada y su alrededor sean X
