@@ -63,7 +63,7 @@ public class Matriz {
                                         
                        }while(!comprobar); 
                     } catch (ArrayIndexOutOfBoundsException n) {
-                        System.out.println("Aqui no entra");
+                        
                     }
                     break;
 
@@ -186,7 +186,6 @@ public class Matriz {
                             }
                         }while(!comprobar);
                     }catch (ArrayIndexOutOfBoundsException n) {
-                        System.out.println("Aqui no entra");
                     }
                     break;
 
